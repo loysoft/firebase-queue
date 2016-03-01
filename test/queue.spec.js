@@ -3,10 +3,10 @@ var _ = require('lodash'),
     chai = require('chai'),
     should = chai.should(),
     expect = chai.expect,
-    winston = require('winston'),
+    picolog = require('picolog'),
     chaiAsPromised = require('chai-as-promised');
 
-winston.level = 'none';
+picolog.level = picolog.NONE;
 
 chai.use(chaiAsPromised);
 

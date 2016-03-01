@@ -45,7 +45,7 @@
     "lodash": "~3.7.0",
     "rsvp": "3.x",
     "node-uuid": "1.4.x",
-    "winston": "1.x"
+    "picolog": "^1.0.3"
   },
   "devDependencies": {
     "chai": "2.2.0",

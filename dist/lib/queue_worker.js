@@ -1,7 +1,7 @@
 'use strict';
 
 var Firebase = require('firebase'),
-    logger = require('winston'),
+    logger = require('picolog'),
     uuid = require('node-uuid'),
     RSVP = require('rsvp'),
     _ = require('lodash');
