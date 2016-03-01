@@ -560,14 +560,11 @@ QueueWorker.prototype._setUpTimeouts = function() {
 
     var setUpTimeout = function(snapshot) {
       var taskName = snapshot.key();
-      var now = new Date().getTime();
-      var startTime = (snapshot.child('_state_changed').val() || now);
-      var expires = Math.max(0, startTime - now + self.taskTimeout);
       var ref = snapshot.ref();
       self.owners[taskName] = snapshot.child('_owner').val();
       self.expiryTimeouts[taskName] = setTimeout(
         self._resetTask.bind(self),
-        expires,
+        self.taskTimeout,
         ref);
     };
 
@@ -742,4 +739,3 @@ QueueWorker.prototype.shutdown = function() {
 };
 
 module.exports = QueueWorker;
-
