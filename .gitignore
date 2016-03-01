@@ -2,6 +2,5 @@
 .idea
 *.iml
 
-dist/
 coverage/
 node_modules/

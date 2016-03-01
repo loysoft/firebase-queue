@@ -1411,14 +1411,14 @@ describe('QueueWorker', function() {
       qw.setTaskSpec(th.validTaskSpecWithTimeout);
       var testRef = tasksRef.push({
         '_state': th.validTaskSpecWithTimeout.inProgressState,
-        '_state_changed': new Date().getTime() - 5
+        '_state_changed': new Date().getTime()
       }, function(errorA) {
         if (errorA) {
           return done(errorA);
         }
         try {
           expect(qw.expiryTimeouts).to.have.all.keys([testRef.key()]);
-          expect(setTimeout.getCall(0).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout - 5);
+          expect(setTimeout.getCall(0).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout);
           spy.restore();
           done();
         } catch (errorB) {
@@ -1443,14 +1443,14 @@ describe('QueueWorker', function() {
           var spy = sinon.spy(global, 'setTimeout');
           testRef.update({
             '_owner': qw.processId + ':1',
-            '_state_changed': new Date().getTime() - 5
+            '_state_changed': new Date().getTime()
           }, function(errorB) {
             if (errorB) {
               return done(errorB);
             }
             try {
               expect(qw.expiryTimeouts).to.have.all.keys([testRef.key()]);
-              expect(setTimeout.getCall(setTimeout.callCount - 1).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout - 5);
+              expect(setTimeout.getCall(setTimeout.callCount - 1).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout);
               spy.restore();
               done();
             } catch (errorC) {
@@ -1471,7 +1471,7 @@ describe('QueueWorker', function() {
         '_owner': qw.processId + ':0',
         '_progress': 0,
         '_state': th.validTaskSpecWithTimeout.inProgressState,
-        '_state_changed': new Date().getTime() - 5
+        '_state_changed': new Date().getTime()
       }, function(errorA) {
         if (errorA) {
           return done(errorA);
@@ -1486,7 +1486,7 @@ describe('QueueWorker', function() {
             }
             try {
               expect(qw.expiryTimeouts).to.have.all.keys([testRef.key()]);
-              expect(setTimeout.getCall(0).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout - 5);
+              expect(setTimeout.getCall(0).args[1]).to.equal(th.validTaskSpecWithTimeout.timeout);
               spy.restore();
               done();
             } catch (errorC) {
