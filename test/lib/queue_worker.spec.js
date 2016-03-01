@@ -6,10 +6,7 @@ var _ = require('lodash'),
     expect = chai.expect,
     sinon = require('sinon'),
     sinonChai = require('sinon-chai'),
-    picolog = require('picolog'),
     chaiAsPromised = require('chai-as-promised');
-
-picolog.level = picolog.NONE;
 
 chai.use(sinonChai);
 chai.use(chaiAsPromised);

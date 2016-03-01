@@ -10,7 +10,7 @@
 
 var _ = require('lodash'),
     RSVP = require('rsvp'),
-    logger = require('picolog'),
+    logger = require('./lib/logger'),
     QueueWorker = require('./lib/queue_worker.js');
 
 var DEFAULT_NUM_WORKERS = 1,
