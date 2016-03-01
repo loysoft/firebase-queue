@@ -2,7 +2,7 @@
 
 var Firebase = require('firebase'),
     logger = require('./logger'),
-    uuid = require('node-uuid'),
+    shortid = require('shortid'),
     RSVP = require('rsvp'),
     _ = require('lodash');
 
@@ -46,7 +46,7 @@ function QueueWorker(tasksRef, processId, sanitize, suppressStack, processingFun
     throw new Error(error);
   }
 
-  self.processId = processId + ':' + uuid.v4();
+  self.processId = processId + ':' + shortid.generate();
   self.shutdownDeffered = null;
 
   self.processingFunction = processingFunction;

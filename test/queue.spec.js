@@ -96,7 +96,7 @@ describe('Queue', function() {
         if (q.initialized) {
           clearInterval(interval);
           try {
-            var specRegex = new RegExp('^' + specId + ':0:[a-f0-9\\-]{36}$');
+            var specRegex = new RegExp('^' + specId + ':0:[a-zA-Z0-9_\\-]{7,14}$');
             expect(q.workers[0].processId).to.match(specRegex);
             done();
           } catch(error) {
